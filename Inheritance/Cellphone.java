@@ -5,6 +5,10 @@ public class Cellphone {
     String number;
     int chord;
 
+    public Cellphone(int i) {
+        System.out.println("super 클래스 호출 => " + i);
+    }
+
     public void setNumber(String n) {
         number = n;
     }
