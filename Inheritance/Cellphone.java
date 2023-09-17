@@ -11,12 +11,16 @@ public class Cellphone {
     public String getModel() {
         return model;
     }
-
     public int getChord() {
         return chord;
     }
 
     public String getNumber() {
         return number;
+    }
+
+    String parentMsg = "Parent Class"; // 오버라이딩하여 보여줄 부모의 메시지
+    public String getMsg() {
+        return parentMsg;
     }
 }
