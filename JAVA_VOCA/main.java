@@ -1,10 +1,12 @@
 package JAVA_VOCA;
 
+import com.sun.tools.javac.Main;
+
 import java.sql.SQLOutput;
 import java.util.*;
 
-public class main {
 
+public class main{
     public static void main(String[] args) {
 
 
@@ -32,7 +34,7 @@ public class main {
         System.out.println(child.getMsg());*/
 
         // 추상클래스의 상속관계
-        AbstractZerg z1 = new AbstractZerg("히드라리스크", false);
+/*        AbstractZerg z1 = new AbstractZerg("히드라리스크", false);
         AbstractProtoss p1 = new AbstractProtoss("드라군", false);
         AbstractTerran t1 = new AbstractTerran("배틀크루져", true);
         System.out.println("히드라리스크의 에너지:: " + z1.getEnergy());
@@ -44,6 +46,31 @@ public class main {
         t1.decEnergy();
         System.out.println("히드라리스크 is under an attacked!! " + z1.getEnergy());
         System.out.println("드라군 is under an attacked!! " + p1.getEnergy());
-        System.out.println("배틀크루저 is under an attacked!! " + t1.getEnergy());
+        System.out.println("배틀크루저 is under an attacked!! " + t1.getEnergy());*/
+
+        // 인터페이스
+        InterfaceImplCustomer customer = new InterfaceImplCustomer();
+        customer.buy();
+        customer.sell();
+        customer.sayHello();
+        InterfaceBuy buyer = customer;
+        buyer.buy();
+        InterfaceSell seller = customer;
+        seller.sell();
+        System.out.println("디폴트 메서드 중복");
+        // 인터페이스 디폴트 메서드가 중복되는 경우
+        buyer.order();
+        seller.order();
+        customer.order();
+        System.out.println("인터페이스 상속");
+        InterfaceImplCustomer myClass = new InterfaceImplCustomer();
+        InterfaceBuy buyImpl = myClass;
+        InterfaceSell sellImpl = myClass;
+        buyImpl.order();
+        sellImpl.order();
+        myClass.myMethod();
+        myClass.sell();
+        myClass.buy();
+
     }
 }
