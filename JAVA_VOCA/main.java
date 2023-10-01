@@ -48,7 +48,7 @@ public class main{
         System.out.println("드라군 is under an attacked!! " + p1.getEnergy());
         System.out.println("배틀크루저 is under an attacked!! " + t1.getEnergy());*/
 
-        // 인터페이스
+/*        // 인터페이스
         InterfaceImplCustomer customer = new InterfaceImplCustomer();
         customer.buy();
         customer.sell();
@@ -70,7 +70,25 @@ public class main{
         sellImpl.order();
         myClass.myMethod();
         myClass.sell();
-        myClass.buy();
+        myClass.buy();*/
 
+        // 열거형
+        EnumEx enumItem = EnumEx.Search;
+        if(enumItem instanceof Object) {
+            System.out.println(enumItem.toString() + " :)");
+            System.out.println("It's instance of Object");
+            System.out.println("value: " + enumItem.ordinal());
+        }
+
+        EnumEx[] items = EnumEx.values();
+        System.out.println("Length of EnumEx: " + items.length);
+        System.out.println("기본 생성자 호출한 enum 객체를 불러오자.");
+        for(EnumEx elem : EnumEx.values()) {
+            System.out.println("Enum Object: " + elem + " || value: " + elem.ordinal());
+        }
+        System.out.println("생성자 호출한 enum 객체를 불러오자.");
+        for(EnumEx elem : EnumEx.values()) {
+            System.out.println("Enum Object: " + elem + " || value: " + elem.getVar());
+        }
     }
 }
