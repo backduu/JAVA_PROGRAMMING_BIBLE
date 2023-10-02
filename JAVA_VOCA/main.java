@@ -72,7 +72,7 @@ public class main{
         myClass.sell();
         myClass.buy();*/
 
-        // 열거형
+/*        // 열거형
         EnumEx enumItem = EnumEx.Search;
         if(enumItem instanceof Object) {
             System.out.println(enumItem.toString() + " :)");
@@ -89,6 +89,36 @@ public class main{
         System.out.println("생성자 호출한 enum 객체를 불러오자.");
         for(EnumEx elem : EnumEx.values()) {
             System.out.println("Enum Object: " + elem + " || value: " + elem.getVar());
-        }
+        }*/
+
+        // 내부클래스
+        // Member 내부클래스
+        System.out.println("Member 내부 클래스");
+        InnerMember outer = new InnerMember();
+        InnerMember.Inner inner = outer.new Inner();
+        InnerMember.Inner inner2 = new InnerMember().new Inner(); // 내부 클래스의 객체 생성.
+
+        inner.printInnerClassData();
+        inner2.printInnerClassData();
+
+        // Local 내부 클래스
+        System.out.println("Local 내부 클래스");
+        InnerLocal outerLocal = new InnerLocal();
+        outerLocal.innerTest(100000);
+        System.out.println("Static 내부 클래스");
+        // static 내부 클래스
+        InnerStatic.InnerStatic2 innerStatic = new InnerStatic.InnerStatic2();
+        innerStatic.printInnerStaticData();
+
+        // InnerStic이라는 외부 클래스 내에서 생성할때
+        // InnerStatic2 inner = new InnerStatic2();
+        // inner.printInnerStaticData();
+
+        // Anonymous 내부 클래스
+        System.out.println("Anonymous 내부 클래스");
+        InnerAnonymous ai = new InnerAnonymous();
+        ai.test();
+        InnerAnonymous_2 ai2 = new InnerAnonymous_2();
+        ai2.inn.printInnerAnonymouseData();
     }
 }
