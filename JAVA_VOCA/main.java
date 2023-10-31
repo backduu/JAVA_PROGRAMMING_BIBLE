@@ -91,7 +91,7 @@ public class main{
             System.out.println("Enum Object: " + elem + " || value: " + elem.getVar());
         }*/
 
-        // 내부클래스
+      /*  // 내부클래스
         // Member 내부클래스
         System.out.println("Member 내부 클래스");
         InnerMember outer = new InnerMember();
@@ -119,6 +119,32 @@ public class main{
         InnerAnonymous ai = new InnerAnonymous();
         ai.test();
         InnerAnonymous_2 ai2 = new InnerAnonymous_2();
-        ai2.inn.printInnerAnonymouseData();
+        ai2.inn.printInnerAnonymouseData();*/
+
+/*        // 제네릭
+        GenericEx1<String> t1 = new GenericEx1<>();
+        String[] strArr = {"sdfs","wi","ab"};
+        t1.set(strArr);
+        t1.print();*/
+
+        // 제네릭 사용법과 와일드카드
+                /*Generic01<String> generic01 = new Generic01<>();
+
+        generic01.add("item1");
+        generic01.add("item2");
+        generic01.show();
+
+        Generic01<Integer> generic02 = new Generic01<>();
+        generic02.add(43);
+        generic02.add(5425);
+        generic02.show();*/
+
+        // 와일드카드
+        GenericEx2<Cat> cat = new GenericEx2<>();
+        cat.add(new Cat());
+        GenericEx2<Dog> dog = new GenericEx2<>();
+        dog.add(new Dog());
+        GenericEx2.cryingAnimalList(cat);
+        GenericEx2.cryingAnimalList(dog);
     }
 }
