@@ -139,12 +139,15 @@ public class main{
         generic02.add(5425);
         generic02.show();*/
 
-        // 와일드카드
+/*        // 와일드카드
         GenericEx2<Cat> cat = new GenericEx2<>();
         cat.add(new Cat());
         GenericEx2<Dog> dog = new GenericEx2<>();
         dog.add(new Dog());
         GenericEx2.cryingAnimalList(cat);
-        GenericEx2.cryingAnimalList(dog);
+        GenericEx2.cryingAnimalList(dog);*/
+
+        // 컬렉션
+
     }
 }
