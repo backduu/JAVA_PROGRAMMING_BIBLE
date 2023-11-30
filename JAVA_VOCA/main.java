@@ -1,15 +1,16 @@
 package JAVA_VOCA;
 
 import com.sun.tools.javac.Main;
-
-import java.sql.SQLOutput;
+import java.io.*;
+import java.sql.*;
 import java.util.*;
+import java.text.*;
+import java.util.regex.Pattern;
 
 
 public class main{
-    public static void main(String[] args) {
 
-
+    public static void main(String[] args) throws IOException {
         // 0(min) -- 2(delete) 4(delete)
         // 1(min) -- 3(delete)
 
@@ -147,7 +148,84 @@ public class main{
         GenericEx2.cryingAnimalList(cat);
         GenericEx2.cryingAnimalList(dog);*/
 
-        // 컬렉션
+        // Calendar 클래스
+/*        Calendar cal=Calendar.getInstance();	//getInstance()로 객체 생성
+        System.out.println("현재 날짜:"+cal.get(Calendar.YEAR)+"-"+(cal.get(Calendar.MONTH)+1)+"-"+cal.get(Calendar.DAY_OF_MONTH));
+        System.out.println("일주일 중 오늘은 "+cal.get(Calendar.DAY_OF_WEEK)+"번째 요일 (1은 일요일)");
+        System.out.println("일년 중 오늘은 "+cal.get(Calendar.DAY_OF_YEAR)+"번째 날");
+        System.out.println("현재 시간 "+cal.get(Calendar.HOUR_OF_DAY)+":"+cal.get(Calendar.MINUTE)+":"+cal.get(Calendar.SECOND)+":"+cal.get(Calendar.MILLISECOND));
+        System.out.println("현재 시간 "+cal.get(Calendar.AM_PM)+":"+cal.get(Calendar.MINUTE)+":"+cal.get(Calendar.SECOND));
+        System.out.println("이번 주는 일년 중 "+cal.get(Calendar.WEEK_OF_YEAR)+"번째 주");*/
 
+/*        Calendar cal=Calendar.getInstance();	//getInstance()로 객체 생성. 기본 현재 날짜
+        cal.set(Calendar.MONDAY,Calendar.DECEMBER); 	//12월로 설정
+        cal.set(Calendar.HOUR_OF_DAY,14);	//오후 2시로 Calendar 객체 설정
+        System.out.println("설정된 날짜 - "+(cal.get(Calendar.MONTH)+1)+"월 "+cal.get(Calendar.DATE)+"일");
+        System.out.println("설정된 시간 - "+cal.get(Calendar.HOUR_OF_DAY)+":"+cal.get(Calendar.MINUTE)+":"+cal.get(Calendar.SECOND));*/
+
+        /*Calendar today=Calendar.getInstance();	//getInstance()로 객체 생성. 기본 현재 날짜
+        System.out.println("1970년 00시 00분부터 흐른 초 :"+today.getTimeInMillis()/1000);
+
+        SimpleDateFormat format=new SimpleDateFormat("a hh:mm:ss");
+        System.out.println("현재시간 "+format.format(today.getTimeInMillis()));	//SimpleDateFormat으로 출력
+        Calendar newYear=Calendar.getInstance();	//현지 시간으로 설정
+        newYear.set(Calendar.YEAR, 2021);
+        newYear.set(Calendar.MONTH, Calendar.OCTOBER);
+        newYear.set(Calendar.DAY_OF_MONTH, 21);
+
+        long diff=newYear.getTimeInMillis()-today.getTimeInMillis();
+        Calendar dDay=Calendar.getInstance();
+        dDay.setTimeInMillis(diff);	//1년 이내로만 이 코드를 쓸 수 있음
+        System.out.println("남은 날 수 :"+(dDay.get(Calendar.DAY_OF_YEAR)-1));	//오늘이 포함되므로 -1
+
+        diff=diff/(60*60*24*1000);	//60(분) * 60(1분) * 24(시간) * 1(초) = 하루
+        System.out.println("남은 날 수 :"+diff);*/
+
+/*        Calendar yesterday=Calendar.getInstance();
+        yesterday.set(Calendar.DATE, yesterday.get(Calendar.DATE)-1);	//현재 날짜 -1로 설정
+        Calendar today=Calendar.getInstance();
+        Calendar tomorrow=Calendar.getInstance();
+        tomorrow.set(Calendar.DATE, tomorrow.get(Calendar.DATE)+1);	//현재 날짜 +1
+
+        System.out.println("오늘이 어제보다 이전인가? "+today.before(yesterday));
+        System.out.println("오늘이 내일보다 이전인가? "+today.before(tomorrow));
+
+        System.out.println("오늘이 어제보다 이후인가? "+today.after(yesterday));
+        System.out.println("오늘이 내일보다 이후인가? "+today.after(tomorrow));*/
+
+        // 스레드 join 메소드 사용법 - before
+        /*System.out.println("main start");
+        Runnable r1 = new MyRunnableOne();
+        Thread myThread = new Thread(r1);
+        myThread.start();
+        System.out.println("main end");*/
+
+        // 스레드 join 메소드 사용법 - after
+/*        System.out.println(Thread.currentThread().getName() + " start");
+        Runnable r1 = new MyRunnableOne();
+        Thread myThread = new Thread(r1);
+        myThread.start();
+        try {
+            myThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            System.out.println(Thread.currentThread().getName() + " end");
+        }*/
+
+        // multi thread 스레드 스케줄러
+/*        MyRunnableOne r1 = new MyRunnableOne();
+        Thread firstThread = new Thread(r1, "it is the first thread");
+        firstThread.start();
+        MyRunnableOne r2 = new MyRunnableOne();
+        Thread secondThread = new Thread(r2, "it is the second thread");
+        secondThread.start();*/
+
+        // 스레드 우선순위
+        Thread t1 = new SuperThreadPriority("first thread");
+        t1.setPriority(Thread.MIN_PRIORITY);
+        t1.start();
+        Thread t2 = new SuperThreadPriority("second thread");
+        t2.start();
     }
 }
