@@ -222,10 +222,20 @@ public class main{
         secondThread.start();*/
 
         // 스레드 우선순위
-        Thread t1 = new SuperThreadPriority("first thread");
+/*        Thread t1 = new SuperThreadPriority("first thread");
         t1.setPriority(Thread.MIN_PRIORITY);
         t1.start();
         Thread t2 = new SuperThreadPriority("second thread");
-        t2.start();
+        t2.start();*/
+
+
+        // 생산자와 소비자 'wait notify notifyAll 메소드 활용'
+        ConcurrentClass_Car car = new ConcurrentClass_Car();
+        ConcurrentClass_Producer producer = new ConcurrentClass_Producer(car);
+        Thread threadOfProducer = new Thread(producer);
+        ConcurrentClass_Customer customer = new ConcurrentClass_Customer(car);
+        Thread threadOfCustomer = new Thread(customer);
+        threadOfCustomer.start();
+        threadOfProducer.start();
     }
 }
