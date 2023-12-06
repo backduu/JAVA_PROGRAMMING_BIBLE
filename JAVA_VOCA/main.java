@@ -2,6 +2,7 @@ package JAVA_VOCA;
 
 import com.sun.tools.javac.Main;
 import java.io.*;
+import java.net.InetAddress;
 import java.sql.*;
 import java.util.*;
 import java.text.*;
@@ -230,12 +231,27 @@ public class main{
 
 
         // 생산자와 소비자 'wait notify notifyAll 메소드 활용'
-        ConcurrentClass_Car car = new ConcurrentClass_Car();
+/*        ConcurrentClass_Car car = new ConcurrentClass_Car();
         ConcurrentClass_Producer producer = new ConcurrentClass_Producer(car);
         Thread threadOfProducer = new Thread(producer);
         ConcurrentClass_Customer customer = new ConcurrentClass_Customer(car);
         Thread threadOfCustomer = new Thread(customer);
         threadOfCustomer.start();
-        threadOfProducer.start();
+        threadOfProducer.start();*/
+
+        // 네트워크 - InetAddress 클래스 활용
+        InetAddress inetAddress = InetAddress.getLocalHost();
+        System.out.println("호스트 이름: " + inetAddress.getHostName());
+        System.out.println("호스트 주소: " + inetAddress.getHostAddress());
+
+        inetAddress = InetAddress.getByName("www.naver.com");
+        System.out.println("www.naver.com 호스트의 이름: " + inetAddress.getHostName());
+        System.out.println("www.naver.com 호스트 주소: " + inetAddress.getHostAddress());
+
+        InetAddress sw[] = InetAddress.getAllByName("www.google.co.uk");
+        for(InetAddress addr : sw) {
+            System.out.println("영국 구글 호스트 이름 : " + addr.getHostName());
+            System.out.println("영국 구글 호스트 주소 : " + addr.getHostAddress());
+        }
     }
 }
