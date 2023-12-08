@@ -3,6 +3,8 @@ package JAVA_VOCA;
 import com.sun.tools.javac.Main;
 import java.io.*;
 import java.net.InetAddress;
+import java.net.URL;
+import java.net.URLConnection;
 import java.sql.*;
 import java.util.*;
 import java.text.*;
@@ -240,7 +242,7 @@ public class main{
         threadOfProducer.start();*/
 
         // 네트워크 - InetAddress 클래스 활용
-        InetAddress inetAddress = InetAddress.getLocalHost();
+/*        InetAddress inetAddress = InetAddress.getLocalHost();
         System.out.println("호스트 이름: " + inetAddress.getHostName());
         System.out.println("호스트 주소: " + inetAddress.getHostAddress());
 
@@ -252,6 +254,68 @@ public class main{
         for(InetAddress addr : sw) {
             System.out.println("영국 구글 호스트 이름 : " + addr.getHostName());
             System.out.println("영국 구글 호스트 주소 : " + addr.getHostAddress());
+        }*/
+
+        // 네트워크 - url 클래스 활용
+        /*URL url = new URL("http", "java.sum.com", 8880, "index.jsp?name=syh1011#content");
+        String protocol = url.getProtocol();
+        String host = url.getHost();
+        int port = url.getPort();
+        int defaultPort = url.getDefaultPort();
+        String path = url.getPath();
+        String query = url.getQuery();
+        String ref = url.getRef();
+        String _url = url.toExternalForm();
+        String mixUrl = null;
+        if(port == -1)
+            mixUrl = protocol + "//" + host + path + "?" + query + "#" + ref;
+        else
+            mixUrl = protocol + "//" + host + ":" + port + path + "?" + query + "#" + ref;
+
+        if(port == -1) port = url.getDefaultPort();
+
+//        System.out.println("protocol: " + protocol);
+//        System.out.println("host: " + host + ", port: " + port);
+//        System.out.println("path: " + path + ", query: " + query);
+//        System.out.println("ref: " + ref + ", mixUrl: " + mixUrl);
+
+        url = new URL("https://www.naver.com");
+        InputStream inputStream = url.openStream();
+        int readByte;
+        System.out.println("문서의 내용 -----------------------------------------------");
+
+        while( ((readByte = inputStream.read()) != -1) ) {
+            System.out.printf("%c", (char) readByte);
         }
+        inputStream.close();*/
+
+        // 네트워크 - URLConnection 클래스의 활용
+        /*URL url = new URL("https://www.naver.com");
+        URLConnection con = url.openConnection();
+        con.connect();
+        Map<String, List<String>> map = con.getHeaderFields();
+        Set<String> s = map.keySet();
+        Iterator<String> iterator = s.iterator();
+        while(iterator.hasNext()) {
+            String name = iterator.next();
+            System.out.println("name -> " + name + " : ");
+            List<String> value = map.get(name);
+            for(String _tmp : value)
+                System.out.println(_tmp);
+        }
+
+        int len = con.getContentLength();
+        System.out.println("문서의 길이: " + len + " byte");
+        if(len > 0) {
+            InputStream input = con.getInputStream();
+            int readByte;
+            System.out.println("############################################# 문서의 내용 #####################################################");
+            while(((readByte = input.read()) != -1) && (--len > 0))
+                System.out.printf("%c", (char)readByte);
+        } else
+            System.out.println("!!! 내용이 없습니다. !!!");*/
+
+        // 네트워크 - Socket 클래스의 활용
+
     }
 }
