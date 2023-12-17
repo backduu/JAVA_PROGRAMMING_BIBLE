@@ -5,6 +5,8 @@ import java.io.*;
 import java.net.InetAddress;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.ByteBuffer;
+import java.nio.IntBuffer;
 import java.sql.*;
 import java.util.*;
 import java.text.*;
@@ -315,7 +317,46 @@ public class main{
         } else
             System.out.println("!!! 내용이 없습니다. !!!");*/
 
-        // 네트워크 - Socket 클래스의 활용
+        // nio
+/*        IntBuffer intBuffer = IntBuffer.allocate(5);
+        intBuffer.put(1000);
+        intBuffer.put(2000);
+        intBuffer.put(3000);
+        intBuffer.put(4000);
 
+        intBuffer.flip();
+        while(intBuffer.hasRemaining()) {
+            System.out.println("첫번째 : " + intBuffer.get());
+        }
+        System.out.println();
+        intBuffer.clear();
+        intBuffer.put(4, 5000);
+        intBuffer.rewind();
+        while(intBuffer.hasRemaining()) {
+            System.out.println("두번째 : " + intBuffer.get());
+        }*/
+        ByteBuffer byteBuffer = ByteBuffer.allocate(12);
+        System.out.println(byteBuffer);
+        byteBuffer.putInt(1002);
+        System.out.println(">> putInt " +byteBuffer);
+        byteBuffer.putDouble(12.444);
+        System.out.println(">> putDouble " + byteBuffer);
+        byteBuffer.flip();
+        System.out.println(byteBuffer.getInt());
+        System.out.println(byteBuffer.getDouble());
+
+        System.out.println(" ========================================= ");
+
+        ByteBuffer byteBuffer1 = ByteBuffer.allocateDirect(6);
+        System.out.println(byteBuffer1);
+        byteBuffer1.putChar('F');
+        System.out.println(">> putChar " + byteBuffer1);
+
+        byteBuffer1.putFloat(22.22F);
+        System.out.println(">> putFloat " + byteBuffer1);
+
+        byteBuffer1.flip();
+        System.out.println(byteBuffer1.getChar());
+        System.out.println(byteBuffer1.getFloat());
     }
 }
