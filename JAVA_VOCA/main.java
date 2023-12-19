@@ -11,7 +11,7 @@ import java.sql.*;
 import java.util.*;
 import java.text.*;
 import java.util.regex.Pattern;
-
+import java.sql.*;
 
 public class main{
 
@@ -335,7 +335,7 @@ public class main{
         while(intBuffer.hasRemaining()) {
             System.out.println("두번째 : " + intBuffer.get());
         }*/
-        ByteBuffer byteBuffer = ByteBuffer.allocate(12);
+/*        ByteBuffer byteBuffer = ByteBuffer.allocate(12);
         System.out.println(byteBuffer);
         byteBuffer.putInt(1002);
         System.out.println(">> putInt " +byteBuffer);
@@ -357,6 +357,25 @@ public class main{
 
         byteBuffer1.flip();
         System.out.println(byteBuffer1.getChar());
-        System.out.println(byteBuffer1.getFloat());
+        System.out.println(byteBuffer1.getFloat());*/
+
+        // JDBC 사용
+
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
+        } catch(ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        // Connection 연결
+        try{
+            String user = "QORENGUS531";
+            String pw = "aa4290";
+            String url = "jdbc:oracle:thin:@localhost:1521:XE";
+            Connection con = DriverManager.getConnection(url, user, pw);
+        } catch(SQLException e) {
+            e.printStackTrace();
+        }
     }
 }
