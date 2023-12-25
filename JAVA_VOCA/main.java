@@ -374,6 +374,31 @@ public class main{
             String pw = "aa4290";
             String url = "jdbc:oracle:thin:@localhost:1521:XE";
             Connection con = DriverManager.getConnection(url, user, pw);
+
+/*            Statement stmt = con.createStatement();
+            StringBuffer sb = new StringBuffer();
+            sb.append("select dep_name from dept");
+            ResultSet rs = stmt.executeQuery(sb.toString());*/
+
+            /* Statement stmt = con.createStatement();
+            StringBuffer sb = new StringBuffer();
+            sb.append("UPDATE dept SET dep_name = '전자컴퓨터비전기술공학과'");
+            boolean isResult = stmt.execute(sb.toString());
+            if(isResult) {
+                ResultSet rs = stmt.getResultSet();
+                while(rs.next()) {
+                    System.out.println("dept name : " + rs.getString(1));
+                }
+            } else {
+                int rowcnt = stmt.getUpdateCount();
+                System.out.println("rowCount : " + rowcnt);
+            }*/
+
+            // PreparedStatement의 객체 생성
+            String sql = "select dept_sub_name from dept where dept_name = ?";
+            PreparedStatement pstmt = con.prepareStatement(sql);
+            pstmt.setString(1, "컴퓨터공학과");
+            ResultSet rs = pstmt.executeQuery();
         } catch(SQLException e) {
             e.printStackTrace();
         }
